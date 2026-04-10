@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h1>NoDistraction</h1>
+        <div class="section toggle">
+          <span>Status:</span>
+          <button id="toggleBtn" class="off">Desligado</button>
+        </div>
+        <div class="section">
+          <div class="add-site">
+            <input type="text" id="siteInput" placeholder="ex: youtube.com" />
+            <button id="addBtn">+</button>
+          </div>
+        </div>
+        <div class="section">
+          <ul id="siteList"></ul>
+        </div>
+      </div>
+      <script src="popup.js"></script>
+    </div>
+  </body>
+</html>
