@@ -2,9 +2,41 @@ const toggleBtn = document.getElementById("toggleBtn");
 const addBtn = document.getElementById("addBtn");
 const siteInput = document.getElementById("siteInput");
 const siteList = document.getElementById("siteList");
+const settingsBtn = document.getElementById("settingsBtn");
+const backBtn = document.getElementById("backBtn");
+const mainScreen = document.getElementById("mainScreen");
+const settingsScreen = document.getElementById("settingsScreen");
+const themeToggle = document.getElementById("themeToggle");
 
 let enabled = false;
 let sites = [];
+
+settingsBtn.addEventListener("click", () => {
+  mainScreen.classList.add("hidden");
+  settingsScreen.classList.remove("hidden");
+});
+
+backBtn.addEventListener("click", () => {
+  settingsScreen.classList.add("hidden");
+  mainScreen.classList.remove("hidden");
+});
+
+chrome.storage.local.get(["darkMode"], (result) => {
+  if (result.darkMode) {
+    document.body.classList.add("white");
+    themeToggle.checked = true;
+  }
+});
+
+themeToggle.addEventListener("change", () => {
+  const enabled = themeToggle.checked;
+
+  document.body.classList.toggle("white", enabled);
+
+  chrome.storage.local.set({
+    darkMode: enabled,
+  });
+});
 
 chrome.storage.local.get(["enabled", "sites"], (data) => {
   enabled = data.enabled || false;
@@ -16,11 +48,11 @@ chrome.storage.local.get(["enabled", "sites"], (data) => {
 
 toggleBtn.addEventListener("click", () => {
   enabled = !enabled;
-  
+
   if (enabled) {
     chrome.storage.local.set({
       enabled,
-      blockedCount: 0
+      blockedCount: 0,
     });
   } else {
     chrome.storage.local.set({ enabled });

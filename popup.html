@@ -7,7 +7,9 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="container">
+      <!-- MAIN SCREEN -->
+      <div class="container" id="mainScreen">
+        <button id="settingsBtn" class="settings-btn">⚙</button>
         <h1>NoDistraction</h1>
         <div class="section toggle">
           <span>Status:</span>
@@ -21,6 +23,18 @@
         </div>
         <div class="section">
           <ul id="siteList"></ul>
+        </div>
+      </div>
+      <!-- SETTINGS -->
+      <div class="container hidden" id="settingsScreen">
+        <button id="backBtn" class="back-btn">←</button>
+        <h1>Configurações</h1>
+        <div class="section theme-section">
+          <span>Tema</span>
+          <label class="switch">
+            <input type="checkbox" id="themeToggle" />
+            <span class="slider"></span>
+          </label>
         </div>
       </div>
       <script src="popup.js"></script>
