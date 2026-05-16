@@ -1,13 +1,18 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0b0f17;
-  color: #e5e7eb;
-  width: 320px;
+.hidden {
+  display: none;
 }
 
-.container {
-  padding: 14px;
+.settings-btn,
+.back-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.settings-btn:hover {
+  transform: rotate(90deg);
+  transition: 0.2s;
 }
 
 h1 {
@@ -22,12 +27,20 @@ h1 {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-
   border-radius: 12px;
   padding: 12px;
   margin-bottom: 10px;
-
   border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body.white .section {
+  background: rgba(158, 154, 154, 0.244);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(103, 103, 103, 0.344);
 }
 
 .toggle {
@@ -41,11 +54,14 @@ button {
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
-
   background: rgba(255, 255, 255, 0.06);
   color: white;
-
   transition: all 0.2s ease;
+}
+
+body.white button {
+  background: rgba(255, 255, 255, 0.4);
+  color: #0b0f17;
 }
 
 button.on {
@@ -72,11 +88,14 @@ input {
   padding: 6px;
   border-radius: 8px;
   border: none;
-
   background: rgba(255, 255, 255, 0.05);
   color: white;
-
   outline: none;
+}
+
+body.white input {
+  background: rgba(255, 255, 255, 0.4);
+  color: #0b0f17;
 }
 
 ul {
@@ -90,7 +109,6 @@ li {
   padding: 6px 8px;
   border-radius: 8px;
   margin-bottom: 6px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,4 +118,75 @@ li button {
   background: transparent;
   color: #f87171;
   font-weight: bold;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0b0f17;
+  color: #e5e7eb;
+  width: 320px;
+}
+
+.container {
+  padding: 14px;
+}
+
+body.white {
+  background: #f3f4f6;
+  color: #0b0f17;
+}
+
+body.white .container {
+  background: #d3d2d2;
+}
+
+/* ===== Switch ===== */
+
+.theme-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background-color: #4f46e5;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(24px);
 }
